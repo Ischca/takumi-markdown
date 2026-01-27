@@ -1,0 +1,182 @@
+/* Beautiful Typography */
+
+.markdown-body {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+    color: var(--c-text);
+    font-family: var(--font-sans);
+
+    /* Pro Typography Settings */
+    font-feature-settings: "palt";
+    /* Proportional Metrics for CJK */
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+
+    /* Global Hybrid Tuning (BIZ UDPGothic) */
+    /* Micro-Stroke: Subtle weight gain (0.15px) */
+    -webkit-text-stroke-width: 0.15px;
+    -webkit-text-stroke-color: #000000;
+
+    /* High Definition: Pure Black & Spacing */
+    color: #000000;
+    letter-spacing: 0.02em;
+}
+
+/* Headings */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    letter-spacing: 0.02em;
+}
+
+.markdown-body h1 {
+    font-size: 2.25em;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    font-size: 1.75em;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+    font-size: 1.5em;
+}
+
+.markdown-body h4 {
+    font-size: 1.25em;
+}
+
+/* Base Text */
+.markdown-body p {
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    text-align: justify;
+    /* Ensure clean edges for block text specifically in CJK? Optional */
+}
+
+/* Blockquotes */
+.markdown-body blockquote {
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    color: var(--c-text-muted);
+    border-left: 0.25em solid var(--c-border);
+    background-color: transparent;
+    /* Clean look */
+}
+
+.markdown-body blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Lists */
+.markdown-body ul,
+.markdown-body ol {
+    padding-left: 2em;
+    margin-bottom: 1.5em;
+}
+
+.markdown-body li {
+    margin-bottom: 0.5em;
+}
+
+.markdown-body li>p {
+    margin-bottom: 0.5em;
+}
+
+/* Code */
+.markdown-body pre {
+    padding: 1rem;
+    overflow: auto;
+    font-size: 0.9em;
+    /* Slightly smaller for code */
+    line-height: 1.5;
+    background-color: var(--c-code-bg);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5em;
+}
+
+.markdown-body code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 0.9em;
+    background-color: var(--c-code-bg);
+    border-radius: var(--radius-sm);
+}
+
+.markdown-body pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+/* Tables */
+.markdown-body table {
+    display: block;
+    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+.markdown-body tr {
+    background-color: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+}
+
+.markdown-body tr:nth-child(2n) {
+    background-color: #fcfcfc;
+    /* subtle stripe? maybe just white */
+    background-color: var(--c-code-bg);
+    /* Use code bg for alternating rows */
+}
+
+.markdown-body th,
+.markdown-body td {
+    padding: 0.8em 1em;
+    border: 1px solid var(--c-border);
+}
+
+.markdown-body th {
+    font-weight: 600;
+    background-color: var(--c-code-bg);
+}
+
+/* Links */
+.markdown-body a {
+    color: var(--c-accent);
+    text-decoration: none;
+}
+
+.markdown-body a:hover {
+    text-decoration: underline;
+}
+
+/* Horizontal Rule */
+.markdown-body hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 2em 0;
+    background-color: var(--c-border);
+    border: 0;
+}

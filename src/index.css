@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* Typography */
+  /* Single Architecture: BIZ UDPGothic Hybrid as the absolute standard */
+  --font-sans: 'Inter', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+  --text-base: 16px;
+  --line-height-base: 1.8;
+  --line-height-heading: 1.4;
+  --letter-spacing-base: 0.04em;
+
+  /* Colors - High Contrast "Crisp" Theme */
+  --c-bg: #ffffff;
+  /* Pure white for crispness */
+  --c-text: #1a1a1a;
+  /* Deeper black for better legibility */
+  --c-text-muted: #595959;
+  --c-accent: #0969da;
+  --c-border: #e1e4e8;
+  --c-code-bg: #f6f8fa;
+
+  /* Layout */
+  --max-width: 700px;
+  /* Reduced from 760px for better eye tracking */
+  --spacing-unit: 8px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--line-height-base);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+  letter-spacing: var(--letter-spacing-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--font-mono);
+}
