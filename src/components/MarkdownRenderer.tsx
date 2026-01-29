@@ -7,7 +7,7 @@ import remarkRuby from '../plugins/remarkRuby';
 import '../styles/typography.css';
 import 'highlight.js/styles/github.css';
 
-interface MarkdownRendererProps {
+export interface MarkdownRendererProps {
     content: string;
 }
 

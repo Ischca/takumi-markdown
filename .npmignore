@@ -1,0 +1,26 @@
+# Development files
+src/
+*.ts
+*.tsx
+tsconfig*.json
+vite.config*.ts
+eslint.config.js
+.gitignore
+
+# Demo app
+src/App.tsx
+src/App.css
+src/main.tsx
+src/index.css
+src/assets/
+
+# VS Code extension (separate package)
+extension/
+
+# Dev tools
+node_modules/
+.git/
+
+# Config files
+*.config.js
+*.config.ts

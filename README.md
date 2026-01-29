@@ -1,73 +1,65 @@
-# React + TypeScript + Vite
+# Takumi Markdown (匠)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Beautiful Markdown renderer for React with Japanese typography optimization and ruby notation support.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎨 **Beautiful Typography** - Optimized for Japanese (CJK) text
+- 📝 **Ruby Notation** - Support for `｜親文字《ルビ》` syntax (小説家になろう/カクヨム style)
+- 📋 **Frontmatter** - YAML frontmatter parsing and display
+- ✨ **GFM Support** - Tables, checkboxes, and more
+- 🎯 **Syntax Highlighting** - Code blocks with highlight.js
 
-## React Compiler
+## Installation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install takumi-markdown
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { MarkdownRenderer } from 'takumi-markdown';
+import 'takumi-markdown/styles.css';
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() {
+  const markdown = `
+# タイトル
+
+これは**美しい**マークダウンです。
+
+｜山田太郎《やまだたろう》は旅に出た。
+`;
+
+  return <MarkdownRenderer content={markdown} />;
+}
 ```
+
+## Ruby Notation
+
+Supports 小説家になろう / カクヨム style ruby (furigana) notation:
+
+| Syntax | Result |
+|--------|--------|
+| `｜漢字《かんじ》` | <ruby>漢字<rt>かんじ</rt></ruby> |
+| `漢字《かんじ》` | <ruby>漢字<rt>かんじ</rt></ruby> (auto-detect) |
+
+## API
+
+### `<MarkdownRenderer />`
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `content` | `string` | Markdown content to render |
+
+### `remarkRuby`
+
+Remark plugin for ruby notation. Exported for advanced users who want to use it with their own react-markdown setup.
+
+```tsx
+import remarkRuby from 'takumi-markdown/remarkRuby';
+```
+
+## License
+
+MIT

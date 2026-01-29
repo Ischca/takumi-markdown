@@ -1,0 +1,237 @@
+/**
+ * Takumi Markdown - Library CSS
+ * Include this in your project: import 'takumi-markdown/styles.css'
+ */
+
+/* === Typography Variables === */
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Manrope:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+    /* Typography */
+    --font-sans: 'Manrope', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif;
+    --font-mono: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    --text-base: 16px;
+    --line-height-base: 1.65;
+    --line-height-heading: 1.25;
+
+    /* Colors - High Contrast "Crisp" Theme */
+    --c-bg: #ffffff;
+    --c-text: #1a1a1a;
+    --c-text-muted: #595959;
+    --c-accent: #0969da;
+    --c-border: #e1e4e8;
+    --c-code-bg: #f6f8fa;
+
+    /* Layout */
+    --max-width: 700px;
+    --spacing-unit: 8px;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+}
+
+/* === Frontmatter Block === */
+.frontmatter-block {
+    margin-bottom: 1.5em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md, 4px);
+    background-color: var(--c-code-bg);
+}
+
+.frontmatter-block summary {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 0.85em;
+    color: var(--c-text-muted);
+    user-select: none;
+}
+
+.frontmatter-block pre {
+    margin: 0;
+    border-top: 1px solid var(--c-border);
+    border-radius: 0;
+}
+
+/* === Ruby (Furigana) === */
+.markdown-body ruby {
+    ruby-position: over;
+}
+
+.markdown-body ruby rt {
+    font-size: 0.5em;
+    color: var(--c-text-muted, #666);
+    font-weight: 400;
+}
+
+/* === Main Typography === */
+.markdown-body {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+    color: var(--c-text);
+    font-family: var(--font-sans);
+    font-feature-settings: "palt";
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    -webkit-text-stroke-width: 0.15px;
+    -webkit-text-stroke-color: #000000;
+    color: #000000;
+    letter-spacing: 0.02em;
+}
+
+/* Headings */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-weight: 700;
+    line-height: var(--line-height-heading);
+    letter-spacing: 0.02em;
+}
+
+.markdown-body h1 {
+    font-size: 2.25em;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    font-size: 1.75em;
+    border-bottom: 1px solid var(--c-border);
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+    font-size: 1.5em;
+}
+
+.markdown-body h4 {
+    font-size: 1.25em;
+}
+
+/* Text */
+.markdown-body p {
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    text-align: justify;
+}
+
+.markdown-body>*:first-child {
+    margin-top: 0 !important;
+}
+
+/* Blockquotes */
+.markdown-body blockquote {
+    margin: 1.5em 0;
+    padding: 0.5em 1em;
+    color: var(--c-text-muted);
+    border-left: 0.25em solid var(--c-border);
+    background-color: transparent;
+}
+
+.markdown-body blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Lists */
+.markdown-body ul,
+.markdown-body ol {
+    padding-left: 2em;
+    margin-bottom: 1.5em;
+}
+
+.markdown-body li {
+    margin-bottom: 0.5em;
+}
+
+.markdown-body li>p {
+    margin-bottom: 0.5em;
+}
+
+/* Code */
+.markdown-body pre {
+    padding: 1rem;
+    overflow: auto;
+    font-size: 0.9em;
+    line-height: 1.5;
+    background-color: var(--c-code-bg);
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5em;
+}
+
+.markdown-body code {
+    padding: 0.2em 0.4em;
+    margin: 0;
+    font-size: 0.9em;
+    font-family: var(--font-mono);
+    background-color: var(--c-code-bg);
+    border-radius: var(--radius-sm);
+}
+
+.markdown-body pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+}
+
+/* Tables */
+.markdown-body table {
+    display: block;
+    width: 100%;
+    width: max-content;
+    max-width: 100%;
+    overflow: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+}
+
+.markdown-body tr {
+    background-color: var(--c-bg);
+    border-top: 1px solid var(--c-border);
+}
+
+.markdown-body tr:nth-child(2n) {
+    background-color: var(--c-code-bg);
+}
+
+.markdown-body th,
+.markdown-body td {
+    padding: 0.8em 1em;
+    border: 1px solid var(--c-border);
+}
+
+.markdown-body th {
+    font-weight: 600;
+    background-color: var(--c-code-bg);
+}
+
+/* Links */
+.markdown-body a {
+    color: var(--c-accent);
+    text-decoration: none;
+}
+
+.markdown-body a:hover {
+    text-decoration: underline;
+}
+
+/* Horizontal Rule */
+.markdown-body hr {
+    height: 0.25em;
+    padding: 0;
+    margin: 2em 0;
+    background-color: var(--c-border);
+    border: 0;
+}
