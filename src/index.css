@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Outfit:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Fira+Code:wght@400;500&family=Source+Code+Pro:wght@400;500&display=swap');
 
 :root {
   /* Typography */
   /* Single Architecture: BIZ UDPGothic Hybrid as the absolute standard */
-  --font-sans: 'Inter', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif;
-  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-sans: 'Manrope', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif;
+  --font-mono: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 
   --text-base: 16px;
-  --line-height-base: 1.8;
-  --line-height-heading: 1.4;
+  --line-height-base: 1.65;
+  --line-height-heading: 1.25;
+  /* Default for H3+ */
+  --line-height-heading-large: 1.15;
+  /* New for H1/H2 */
   --letter-spacing-base: 0.04em;
 
   /* Colors - High Contrast "Crisp" Theme */
@@ -43,6 +46,11 @@ body {
   letter-spacing: var(--letter-spacing-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure the first element in the document has no top margin */
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
 }
 
 code {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { MarkdownRenderer } from './components/MarkdownRenderer';
 
-const INITIAL_MARKDOWN = `# Beautiful Markdown
+const INITIAL_MARKDOWN = `# Tsumugi Markdown
 
 これは**最も美しいマークダウンレンダラー**です。
 日本語の文章が読みやすく表示されるようにデザインされています。

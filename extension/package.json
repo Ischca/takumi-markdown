@@ -1,0 +1,25 @@
+{
+    "name": "takumi-markdown",
+    "displayName": "Takumi Markdown",
+    "description": "匠の技で紡ぐ、読みやすさを極めたMarkdownレンダラー。Manrope + Fira Code + BIZ UDPGothic.",
+    "marketing": {
+        "icon": "icon.png"
+    },
+    "version": "1.4.0",
+    "publisher": "antigravity",
+    "engines": {
+        "vscode": "^1.90.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "contributes": {
+        "markdown.previewStyles": [
+            "./styles/beautiful-markdown.css"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shota-watanabe/takumi-markdown"
+    }
+}

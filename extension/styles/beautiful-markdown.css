@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Fira+Code:wght@400;500&family=Manrope:wght@400;500;600&display=swap');
+
+/* VS Code Markdown Preview Style Extension (v1.4.0) */
+/* Name: Takumi Markdown (匠マークダウン) */
+/* Features: Native Dark Mode + Manrope (English) + Fira Code (Code) + BIZ UDPGothic (Japanese) */
+
+/* =========================================
+   Base Typography (Shared)
+   ========================================= */
+.markdown-body {
+    font-family: 'Manrope', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif !important;
+    font-size: 16px;
+    line-height: 1.65;
+    letter-spacing: 0.02em;
+
+    /* Pro Typography Settings */
+    font-feature-settings: "palt";
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+}
+
+/* Ensure the first element in the document has no top margin */
+.markdown-body>*:first-child {
+    margin-top: 0 !important;
+}
+
+/* Headings (Shared Layout for H3-H6) */
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+    margin-top: 1.8em;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+/* Aggressive Tightening for Large Headings (H1, H2) */
+.markdown-body h1,
+.markdown-body h2 {
+    margin-top: 1.5em;
+    /* More compact */
+    margin-bottom: 0.5em;
+    /* Closer to text */
+    font-weight: 700;
+    line-height: 1.15;
+    /* Very tight */
+    letter-spacing: 0.02em;
+}
+
+.markdown-body h1 {
+    font-size: 2.25em;
+    border-bottom: 1px solid;
+    padding-bottom: 0.3em;
+}
+
+.markdown-body h2 {
+    font-size: 1.75em;
+    border-bottom: 1px solid;
+    padding-bottom: 0.3em;
+}
+
+/* =========================================
+   Light Mode (Paper-like Beauty)
+   ========================================= */
+body.vscode-light .markdown-body {
+    /* Pure Black Text + Black Micro-Stroke */
+    color: #000000;
+    -webkit-text-stroke: 0.15px #000000;
+}
+
+body.vscode-light .markdown-body h1,
+body.vscode-light .markdown-body h2,
+body.vscode-light .markdown-body h3,
+body.vscode-light .markdown-body h4 {
+    color: #000000;
+    border-bottom-color: #e5e7eb;
+}
+
+body.vscode-light .markdown-body a {
+    color: #2563eb;
+}
+
+body.vscode-light .markdown-body blockquote {
+    color: #4b5563;
+    border-left-color: #e5e7eb;
+}
+
+body.vscode-light .markdown-body pre {
+    background-color: #f3f4f6;
+}
+
+/* Light Gray for Code */
+
+/* =========================================
+   Dark Mode (Digital Beauty)
+   ========================================= */
+body.vscode-dark .markdown-body,
+body.vscode-high-contrast .markdown-body {
+    /* Pure White Text + White Micro-Stroke for crispness against dark bg */
+    color: #ffffff;
+    -webkit-text-stroke: 0.15px #ffffff;
+}
+
+body.vscode-dark .markdown-body h1,
+body.vscode-dark .markdown-body h2,
+body.vscode-dark .markdown-body h3,
+body.vscode-dark .markdown-body h4 {
+    color: #ffffff;
+    border-bottom-color: #374151;
+    /* Darker border */
+}
+
+body.vscode-dark .markdown-body a {
+    color: #60a5fa;
+}
+
+/* Lighter Blue */
+body.vscode-dark .markdown-body blockquote {
+    color: #9ca3af;
+    border-left-color: #374151;
+}
+
+/* Code Blocks: Let VS Code theme handle background, or subtle dark overlay if needed */
+/* We remove forced background to allow syntax highlighting to match the theme's bg */
+body.vscode-dark .markdown-body pre {
+    background-color: rgba(255, 255, 255, 0.05);
+    /* Very subtle highlight */
+    border: 1px solid #374151;
+}
+
+/* Code Typography: Fira Code (Modern & Playful) */
+.markdown-body pre,
+.markdown-body code {
+    font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+    font-variant-ligatures: normal;
+    /* Enable Ligatures */
+}
+
+/* Fallback Media Query (for environments missing classes) */
+@media (prefers-color-scheme: dark) {
+    .markdown-body {
+        color: #ffffff !important;
+        -webkit-text-stroke: 0.15px #ffffff !important;
+    }
+
+    .markdown-body pre {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+}
