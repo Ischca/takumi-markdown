@@ -24,6 +24,12 @@ tags:
 - 日本語に最適化された行間と文字間
 - クリアな階層構造
 
+## ルビ記法テスト
+
+｜山田太郎《やまだたろう》は｜彼女《ヒロイン》と出会った。
+
+漢字《かんじ》の自動検出も可能です。
+
 \`\`\`javascript
 function hello() {
   console.log("Hello, Beautiful World!");

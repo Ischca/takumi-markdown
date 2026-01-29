@@ -20,6 +20,17 @@
     border-radius: 0;
 }
 
+/* Ruby (Furigana) Styling */
+.markdown-body ruby {
+    ruby-position: over;
+}
+
+.markdown-body ruby rt {
+    font-size: 0.5em;
+    color: var(--c-text-muted, #666);
+    font-weight: 400;
+}
+
 /* Beautiful Typography */
 
 .markdown-body {

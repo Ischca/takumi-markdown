@@ -2,6 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
+import rehypeRaw from 'rehype-raw';
+import remarkRuby from '../plugins/remarkRuby';
 import '../styles/typography.css';
 import 'highlight.js/styles/github.css';
 
@@ -38,8 +40,8 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) =
                 </details>
             )}
             <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeHighlight]}
+                remarkPlugins={[remarkGfm, remarkRuby]}
+                rehypePlugins={[rehypeRaw, rehypeHighlight]}
                 components={{}}
             >
                 {body}
