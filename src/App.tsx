@@ -2,7 +2,18 @@ import { useState } from 'react';
 import './App.css';
 import { MarkdownRenderer } from './components/MarkdownRenderer';
 
-const INITIAL_MARKDOWN = `# Tsumugi Markdown
+const INITIAL_MARKDOWN = `---
+title: Takumi Markdown
+date: 2026-01-30
+author: Sample Author
+status: published
+tags:
+  - Typography
+  - Markdown
+  - Japanese
+---
+
+# Takumi Markdown
 
 これは**最も美しいマークダウンレンダラー**です。
 日本語の文章が読みやすく表示されるようにデザインされています。

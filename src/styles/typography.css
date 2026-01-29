@@ -1,3 +1,25 @@
+/* Frontmatter Block (collapsible) */
+.frontmatter-block {
+    margin-bottom: 1.5em;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md, 4px);
+    background-color: var(--c-code-bg);
+}
+
+.frontmatter-block summary {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    font-size: 0.85em;
+    color: var(--c-text-muted);
+    user-select: none;
+}
+
+.frontmatter-block pre {
+    margin: 0;
+    border-top: 1px solid var(--c-border);
+    border-radius: 0;
+}
+
 /* Beautiful Typography */
 
 .markdown-body {
