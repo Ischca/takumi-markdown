@@ -39,11 +39,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json",
+    "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json && node scripts/copy-styles.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview",
+    "test:ssr": "node scripts/ssr-smoke.mjs && node scripts/ssr-smoke.cjs && node scripts/assert-css.mjs",
     "prepublishOnly": "npm run build:lib"
   },
   "peerDependencies": {

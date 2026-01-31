@@ -4,8 +4,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeRaw from 'rehype-raw';
 import remarkRuby from '../plugins/remarkRuby';
-import '../styles/typography.css';
-import 'highlight.js/styles/github.css';
 
 export interface MarkdownRendererProps {
     content: string;
