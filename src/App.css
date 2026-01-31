@@ -322,6 +322,11 @@ textarea {
   word-break: break-all;
 }
 
+.markdown-body pre code {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+}
+
 .markdown-body img,
 .markdown-body table {
   max-width: 100%;
