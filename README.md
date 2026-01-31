@@ -4,14 +4,14 @@
 [![npm downloads](https://img.shields.io/npm/dm/takumi-markdown.svg)](https://www.npmjs.com/package/takumi-markdown)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Beautiful Markdown renderer for React with Japanese typography optimization and ruby notation support.
+Beautiful Markdown renderer for React with CJK typography optimization and ruby (furigana) notation support.
 
 <img src="./assets/preview.png" alt="Takumi Markdown Preview" width="600" />
 
 ## Features
 
-- 🎨 **Beautiful Typography** - Optimized for Japanese (CJK) text
-- 📝 **Ruby Notation** - Support for `｜親文字《ルビ》` syntax (小説家になろう/カクヨム style)
+- 🎨 **Beautiful Typography** - Optimized for CJK (Chinese, Japanese, Korean) text
+- 📝 **Ruby Notation** - Support for `｜text《ruby》` syntax (小説家になろう/カクヨム style)
 - 📋 **Frontmatter** - YAML frontmatter parsing and display
 - ✨ **GFM Support** - Tables, checkboxes, and more
 - 🎯 **Syntax Highlighting** - Code blocks with highlight.js
@@ -20,8 +20,8 @@ Beautiful Markdown renderer for React with Japanese typography optimization and 
 
 <img src="./assets/comparison.png" alt="Comparison with standard renderer" width="700" />
 
-> Left: Standard Markdown (ruby syntax shown as raw text)  
-> Right: Takumi Markdown (ruby rendered as furigana)
+> **Left**: Standard Markdown (ruby syntax shown as raw text)  
+> **Right**: Takumi Markdown (ruby rendered as furigana)
 
 ## Installation
 
@@ -37,11 +37,15 @@ import 'takumi-markdown/styles.css';
 
 function App() {
   const markdown = `
-# タイトル
+# Hello World
 
-これは**美しい**マークダウンです。
+This is a **beautiful** markdown renderer.
 
-｜山田太郎《やまだたろう》は旅に出た。
+## Ruby Notation Example
+
+The protagonist ｜山田太郎《Yamada Taro》 embarked on a journey.
+
+Japanese text with furigana: 漢字《かんじ》
 `;
 
   return <MarkdownRenderer content={markdown} />;
@@ -50,12 +54,22 @@ function App() {
 
 ## Ruby Notation
 
-Supports 小説家になろう / カクヨム style ruby (furigana) notation:
+Supports ruby (furigana) notation commonly used in Japanese web novels:
 
-| Syntax | Result |
-|--------|--------|
-| `｜漢字《かんじ》` | <ruby>漢字<rt>かんじ</rt></ruby> |
-| `漢字《かんじ》` | <ruby>漢字<rt>かんじ</rt></ruby> (auto-detect) |
+| Syntax | Description | Result |
+|--------|-------------|--------|
+| `｜text《ruby》` | Explicit delimiter | text with ruby above |
+| `漢字《かんじ》` | Auto-detect kanji | 漢字 with かんじ above |
+
+### Examples
+
+```markdown
+The word ｜hello《こんにちは》 means "hello" in Japanese.
+
+Character names: ｜Alice《アリス》 and ｜Bob《ボブ》
+
+Mixed content: Welcome to 東京《Tokyo》!
+```
 
 ## API
 
