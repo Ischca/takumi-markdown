@@ -21,6 +21,10 @@ extension/
 node_modules/
 .git/
 
+# Unnecessary dist files
+dist/vite.svg
+dist/*.map
+
 # Config files
 *.config.js
 *.config.ts

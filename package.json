@@ -17,7 +17,11 @@
     "./styles.css": "./dist/takumi-markdown.css"
   },
   "files": [
-    "dist"
+    "dist/**/*.js",
+    "dist/**/*.cjs",
+    "dist/**/*.mjs",
+    "dist/**/*.css",
+    "dist/**/*.d.ts"
   ],
   "keywords": [
     "markdown",
