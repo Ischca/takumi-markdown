@@ -288,7 +288,10 @@ textarea {
   border-radius: 0 16px 16px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   font-size: 0.95rem;
-  /* Slightly smaller for chat */
+  min-width: 0;
+  /* Allow shrinking in flexbox */
+  overflow: hidden;
+  /* Prevent content from overflowing */
 }
 
 /* Adjust Takumi styles for chat context */
@@ -304,27 +307,29 @@ textarea {
 }
 
 /* Prevent horizontal overflow */
-.takumi-markdown {
+.markdown-body {
   width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
-.takumi-markdown pre {
+.markdown-body pre {
   max-width: 100%;
   overflow-x: auto;
   white-space: pre-wrap;
   /* Wrap long lines */
   word-wrap: break-word;
+  word-break: break-all;
 }
 
-.takumi-markdown img,
-.takumi-markdown table {
+.markdown-body img,
+.markdown-body table {
   max-width: 100%;
   height: auto;
 }
 
 /* Smaller code in chat bubbles */
-.chat-bubble .takumi-markdown pre {
+.chat-bubble .markdown-body pre {
   font-size: 0.85em;
   padding: 0.75rem;
 }
