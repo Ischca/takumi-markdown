@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;500;600&family=Manrope:wght@400;500;600&family=Noto+Serif+JP:wght@400;700&display=swap">
+    <style>
+        :root {
+            --font-sans: 'Manrope', 'BIZ UDPGothic', 'Inter', sans-serif;
+            --font-serif: "Noto Serif JP", "Georgia", serif;
+            --c-text: #000000;
+            --c-text-muted: #595959;
+            --c-border: #e1e4e8;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--c-text);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+        .header-title {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            font-size: 30px;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        .comparison-container {
+            display: flex;
+            width: 1400px;
+            height: 1000px; /* Extended height */
+            background: white;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+        .pane {
+            flex: 1;
+            padding: 70px 90px;
+            display: flex;
+            flex-direction: column;
+        }
+        .pane-left {
+            background-color: #ffffff;
+            border-right: 1px solid #f0f0f0;
+        }
+        .pane-right {
+            background-color: #f9f9f9;
+        }
+        .label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: #888;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 6px;
+            width: fit-content;
+        }
+        /* Standard side */
+        .standard-content {
+            font-family: var(--font-serif);
+            line-height: 1.7;
+            color: #444;
+        }
+        .standard-content h3 {
+            font-family: var(--font-sans);
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #111;
+        }
+        /* Takumi side */
+        .takumi-content {
+            font-family: var(--font-serif);
+            line-height: 1.65;
+            color: #000;
+            letter-spacing: 0.02em;
+            -webkit-text-stroke-width: 0.15px;
+            -webkit-text-stroke-color: #000;
+            text-rendering: optimizeLegibility;
+        }
+        .takumi-content h3 {
+            font-family: var(--font-sans);
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 4px solid #000;
+            color: #000;
+        }
+        .takumi-content p {
+            text-align: justify;
+            margin-bottom: 1.8em;
+        }
+        ruby {
+            ruby-position: over;
+        }
+        ruby rt {
+            font-size: 0.45em;
+            color: #666;
+            font-family: var(--font-sans);
+            font-weight: 400;
+            letter-spacing: 0;
+        }
+        /* Vignette effect */
+        .vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            box-shadow: inset 0 0 200px rgba(0,80,255,0.08); /* Blueish tint */
+        }
+    </style>
+</head>
+<body>
+    <div class="vignette"></div>
+    <div class="header-title">Typography Comparison</div>
+    <div class="comparison-container">
+        <div class="pane pane-left">
+            <div class="label">STANDARD RENDERER</div>
+            <div class="standard-content">
+                <h3>English Serif Typography</h3>
+                <p>Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book 《volume》 her sister was reading, but it had no pictures or conversations in it. 'And what is the use of a book,' thought Alice 'without pictures or conversations?' So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
+                <div style="margin-top: 40px;"></div>
+                <h3>Multilingual Support</h3>
+                <p>And of course, for multilingual contexts, Takumi handles complex scripts with ease.</p>
+                <p>私《わたし》はその人《ひと》を常《つね》に先生《せんせい》と呼《よ》んでいた。だからここでもただ先生《せんせい》と書《か》くだけで本名《ほんみょう》は打《う》ち明《あ》けない。これは世間《せけん》を憚《はばか》る遠慮《えんりょ》というよりも、その方《ほう》が私《わたし》にとって自然《しぜん》だからである。 私はその人の記憶を呼び起すごとに、すぐ「先生」といいたくなる。</p>
+            </div>
+        </div>
+        <div class="pane pane-right">
+            <div class="label">TAKUMI MARKDOWN</div>
+            <div class="takumi-content">
+                <h3>English Serif Typography</h3>
+                <p>Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the <ruby>book<rt>volume</rt></ruby> her sister was reading, but it had no pictures or conversations in it. 'And what is the use of a book,' thought Alice 'without pictures or conversations?' So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.</p>
+                <div style="margin-top: 40px;"></div>
+                <h3>Multilingual Support</h3>
+                <p>And of course, for multilingual contexts, Takumi handles complex scripts with ease.</p>
+                <p><ruby>私<rt>わたし</rt></ruby>はその<ruby>人<rt>ひと</rt></ruby>を<ruby>常<rt>つね</rt></ruby>に<ruby>先生<rt>せんせい</rt></ruby>と<ruby>呼<rt>よ</rt></ruby>んでいた。だからここでもただ<ruby>先生<rt>せんせい</rt></ruby>と<ruby>書<rt>か</rt></ruby>くだけで<ruby>本名<rt>ほんみょう</rt></ruby>は<ruby>打<rt>う</rt></ruby>ち<ruby>明<rt>あ</rt></ruby>けない。これは<ruby>世間<rt>せけん</rt></ruby>を<ruby>憚<rt>はばか</rt></ruby>る<ruby>遠慮<rt>えんりょ</rt></ruby>というよりも、その<ruby>方<rt>ほう</rt></ruby>が<ruby>私<rt>わたし</rt></ruby>にとって<ruby>自然<rt>しぜん</rt></ruby>だからである。 <ruby>私<rt>わたし</rt></ruby>はその<ruby>人<rt>ひと</rt></ruby>の<ruby>記憶<rt>きおく</rt></ruby>を<ruby>呼<rt>よ</rt></ruby>び<ruby>起<rt>お</rt></ruby>こすごとに、すぐ「<ruby>先生<rt>せんせい</rt></ruby>」といいたくなる。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
