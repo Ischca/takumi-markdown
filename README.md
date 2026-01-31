@@ -4,24 +4,28 @@
 [![npm downloads](https://img.shields.io/npm/dm/takumi-markdown.svg)](https://www.npmjs.com/package/takumi-markdown)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Beautiful Markdown renderer for React with CJK typography optimization and ruby (furigana) notation support.
+Beautiful Markdown renderer for React, meticulously crafted for CJK (Chinese, Japanese, Korean) typography and readability.
 
 <img src="./assets/preview.png" alt="Takumi Markdown Preview" width="600" />
 
+## Philosophy
+
+Most markdown renderers focus on functionality. Takumi focuses on the **reading experience**.
+We optimize line heights, letter spacing, and font choices to create documents that feel professional and polished by default.
+
 ## Features
 
-- 🎨 **Beautiful Typography** - Optimized for CJK (Chinese, Japanese, Korean) text
-- 📝 **Ruby Notation** - Support for `｜text《ruby》` syntax (小説家になろう/カクヨム style)
-- 📋 **Frontmatter** - YAML frontmatter parsing and display
-- ✨ **GFM Support** - Tables, checkboxes, and more
-- 🎯 **Syntax Highlighting** - Code blocks with highlight.js
+- 🎨 **Premium Typography** - Optimized specifically for Japanese text (C-spacing, P-alt)
+- 📝 **Ruby Support** - Render `｜text《ruby》` syntax beautifully (web novel style)
+- 📋 **Rich Frontmatter** - Clean metadata display
+- ✨ **Modern Standards** - GFM support, syntax highlighting, and responsive tables
 
-## Comparison
+## Visual Experience
 
-<img src="./assets/comparison.png" alt="Comparison with standard renderer" width="700" />
+<img src="./assets/comparison.png" alt="Visual Comparison" width="700" />
 
-> **Left**: Standard Markdown (ruby syntax shown as raw text)  
-> **Right**: Takumi Markdown (ruby rendered as furigana)
+> **Left**: Default rendering (standard typography, raw syntax)  
+> **Right**: Takumi rendering (optimized spacing, rendered rubies, premium feel)
 
 ## Installation
 
@@ -37,15 +41,11 @@ import 'takumi-markdown/styles.css';
 
 function App() {
   const markdown = `
-# Hello World
+# The Art of Text
 
-This is a **beautiful** markdown renderer.
+Words should be beautiful.
 
-## Ruby Notation Example
-
-The protagonist ｜山田太郎《Yamada Taro》 embarked on a journey.
-
-Japanese text with furigana: 漢字《かんじ》
+｜Typography《タイポグラフィ》 matters.
 `;
 
   return <MarkdownRenderer content={markdown} />;
@@ -54,22 +54,12 @@ Japanese text with furigana: 漢字《かんじ》
 
 ## Ruby Notation
 
-Supports ruby (furigana) notation commonly used in Japanese web novels:
+Supports the standard Japanese web novel format:
 
 | Syntax | Description | Result |
 |--------|-------------|--------|
-| `｜text《ruby》` | Explicit delimiter | text with ruby above |
-| `漢字《かんじ》` | Auto-detect kanji | 漢字 with かんじ above |
-
-### Examples
-
-```markdown
-The word ｜hello《こんにちは》 means "hello" in Japanese.
-
-Character names: ｜Alice《アリス》 and ｜Bob《ボブ》
-
-Mixed content: Welcome to 東京《Tokyo》!
-```
+| `｜text《ruby》` | Explicit | text with ruby above |
+| `漢字《かんじ》` | Auto-detect | 漢字 with かんじ above |
 
 ## API
 
