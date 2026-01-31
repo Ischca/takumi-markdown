@@ -191,8 +191,8 @@ body {
 
 .demo-workspace {
   display: flex;
-  height: 600px;
-  /* Fixed height for demo */
+  height: 800px;
+  /* Extended height for better visibility */
   border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;

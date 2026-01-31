@@ -80,8 +80,9 @@ function App() {
         <div className="hero-content">
           <h1 className="hero-title">Takumi Markdown</h1>
           <p className="hero-subtitle">
-            The Premium Markdown Renderer for the AI Era.<br />
-            Beautiful typography for English & Japanese, right out of the box.
+            <strong>Reading is the bottleneck of the AI Era.</strong><br />
+            Takumi transforms generated text into a beautiful reading experience.<br />
+            Optimized for documentation, chat logs, and knowledge bases.
           </p>
           <div className="hero-actions">
             <a href="https://github.com/ischca/takumi-markdown" className="btn btn-primary">GitHub</a>
