@@ -1,6 +1,12 @@
 # Takumi Markdown (匠)
 
+[![npm version](https://img.shields.io/npm/v/takumi-markdown.svg)](https://www.npmjs.com/package/takumi-markdown)
+[![npm downloads](https://img.shields.io/npm/dm/takumi-markdown.svg)](https://www.npmjs.com/package/takumi-markdown)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 Beautiful Markdown renderer for React with Japanese typography optimization and ruby notation support.
+
+<img src="./assets/preview.png" alt="Takumi Markdown Preview" width="600" />
 
 ## Features
 
@@ -9,6 +15,13 @@ Beautiful Markdown renderer for React with Japanese typography optimization and 
 - 📋 **Frontmatter** - YAML frontmatter parsing and display
 - ✨ **GFM Support** - Tables, checkboxes, and more
 - 🎯 **Syntax Highlighting** - Code blocks with highlight.js
+
+## Comparison
+
+<img src="./assets/comparison.png" alt="Comparison with standard renderer" width="700" />
+
+> Left: Standard Markdown (ruby syntax shown as raw text)  
+> Right: Takumi Markdown (ruby rendered as furigana)
 
 ## Installation
 
