@@ -4,6 +4,10 @@ import { resolve } from 'path';
 
 export default defineConfig({
     plugins: [react()],
+    resolve: {
+        // Avoid browser-only export conditions to keep SSR-safe code paths.
+        conditions: ['module', 'import', 'default']
+    },
     build: {
         lib: {
             entry: resolve(__dirname, 'src/lib/index.ts'),

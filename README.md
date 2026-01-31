@@ -54,6 +54,36 @@ Words should be beautiful.
 }
 ```
 
+## SSR (Next.js)
+
+Takumi is SSR-safe as long as you load the CSS globally (Next.js requires global CSS to be imported in its root files).
+
+**App Router**
+
+```tsx
+// app/layout.tsx
+import 'takumi-markdown/styles.css';
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="ja">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+**Pages Router**
+
+```tsx
+// pages/_app.tsx
+import 'takumi-markdown/styles.css';
+
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+```
+
 ## Ruby Notation
 
 Supports the standard Japanese web novel format:
