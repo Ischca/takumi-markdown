@@ -312,15 +312,21 @@ textarea {
 .takumi-markdown pre {
   max-width: 100%;
   overflow-x: auto;
-  /* Scroll code only */
-  white-space: pre;
-  /* Keep code format */
+  white-space: pre-wrap;
+  /* Wrap long lines */
+  word-wrap: break-word;
 }
 
 .takumi-markdown img,
 .takumi-markdown table {
   max-width: 100%;
   height: auto;
+}
+
+/* Smaller code in chat bubbles */
+.chat-bubble .takumi-markdown pre {
+  font-size: 0.85em;
+  padding: 0.75rem;
 }
 
 /* Features Section */
