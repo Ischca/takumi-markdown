@@ -241,10 +241,12 @@ textarea {
 
 .preview-pane {
   flex: 1;
-  overflow-y: auto;
+  overflow-y: visible;
+  /* Don't scroll inside, let container grow */
   padding: 0;
   background: white;
-  height: 100%;
+  height: auto;
+  /* Let it grow */
 }
 
 /* Document Mode Styles */
@@ -299,6 +301,26 @@ textarea {
 .chat-bubble .takumi-markdown h2 {
   font-size: 1.3rem;
   border-bottom: 1px solid #eee;
+}
+
+/* Prevent horizontal overflow */
+.takumi-markdown {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.takumi-markdown pre {
+  max-width: 100%;
+  overflow-x: auto;
+  /* Scroll code only */
+  white-space: pre;
+  /* Keep code format */
+}
+
+.takumi-markdown img,
+.takumi-markdown table {
+  max-width: 100%;
+  height: auto;
 }
 
 /* Features Section */
