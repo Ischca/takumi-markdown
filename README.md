@@ -4,6 +4,8 @@
 [![npm downloads](https://img.shields.io/npm/dm/takumi-markdown.svg)](https://www.npmjs.com/package/takumi-markdown)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+**[🚀 Live Demo](https://ischca.github.io/takumi-markdown/)** | **[📦 npm](https://www.npmjs.com/package/takumi-markdown)**
+
 Beautiful Markdown renderer for React, meticulously crafted for CJK (Chinese, Japanese, Korean) typography and readability.
 
 <img src="./assets/preview.png" alt="Takumi Markdown Preview" width="600" />
