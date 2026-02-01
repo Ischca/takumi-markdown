@@ -1,6 +1,6 @@
 {
   "name": "takumi-markdown",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Beautiful Markdown renderer for React with Japanese typography optimization and ruby notation support",
   "author": "ischca",
   "license": "MIT",
