@@ -53,8 +53,8 @@
   },
   "dependencies": {
     "highlight.js": "^11.11.1",
+    "lowlight": "^3.3.0",
     "react-markdown": "^10.1.0",
-    "rehype-highlight": "^7.0.2",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "unist-util-visit": "^5.1.0"

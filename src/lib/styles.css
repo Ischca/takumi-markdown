@@ -1,40 +1,72 @@
 /**
- * Takumi Markdown - Library CSS
- * Include this in your project: import 'takumi-markdown/styles.css'
+ * Takumi Markdown - Japanese Typography Optimized CSS
+ * 日本語Webタイポグラフィの決定版
  */
 
+/* === Web Fonts === */
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Manrope:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
 /* === Typography Variables === */
-@import url('https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&family=BIZ+UDPGothic:wght@400;700&family=Manrope:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap');
-
 :root {
-    /* Typography */
-    --font-sans: 'Manrope', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', sans-serif;
-    --font-mono: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    /* Vertical Rhythm Base Unit */
+    --rhythm: 1.75rem;
 
-    --text-base: 16px;
-    --line-height-base: 1.65;
-    --line-height-heading: 1.25;
+    /* Fluid Typography */
+    --text-base: clamp(15px, 1vw + 12px, 18px);
 
-    /* Colors - High Contrast "Crisp" Theme */
+    /*
+     * 行長（Line Length）
+     * 日本語の最適行長: 25-40文字（35文字前後が理想）
+     * 日本語は1文字≈1emなので、em単位で指定
+     * 35em = 35文字 × フォントサイズ
+     * ※ ch単位は欧文"0"幅基準のため日本語には不適切
+     */
+    --max-width: clamp(320px, 90vw, 38em);
+
+    /*
+     * Font Stacks
+     * Manrope（欧文専用フォント）→ 日本語グリフを持たないため、
+     * 日本語文字は自動的に BIZ UDPGothic にフォールバックされる
+     */
+    --font-sans: 'Manrope', 'BIZ UDPGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic Medium', 'Yu Gothic', system-ui, sans-serif;
+    --font-mono: 'Fira Code', 'BIZ UDGothic', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+
+    /* Line Heights */
+    --line-height-base: 1.8;
+    --line-height-heading: 1.3;
+
+    /* Colors - High Contrast Theme */
     --c-bg: #ffffff;
     --c-text: #1a1a1a;
     --c-text-muted: #595959;
+    --c-text-heading: #0d0d0d;
     --c-accent: #0969da;
+    --c-accent-hover: #0550ae;
     --c-border: #e1e4e8;
+    --c-border-heavy: #c9ccd1;
     --c-code-bg: #f6f8fa;
+    --c-blockquote-bg: #fafbfc;
+    --c-blockquote-border: #dfe2e5;
 
-    /* Layout */
-    --max-width: 700px;
+    /* Spacing */
     --spacing-unit: 8px;
     --radius-sm: 4px;
     --radius-md: 8px;
+
+    /* Heading Scale (Major Third) */
+    --scale-h1: 2.441em;
+    --scale-h2: 1.953em;
+    --scale-h3: 1.563em;
+    --scale-h4: 1.25em;
+    --scale-h5: 1em;
+    --scale-h6: 0.875em;
 }
 
 /* === Frontmatter Block === */
 .frontmatter-block {
-    margin-bottom: 1.5em;
+    margin-bottom: var(--rhythm);
     border: 1px solid var(--c-border);
-    border-radius: var(--radius-md, 4px);
+    border-radius: var(--radius-md);
     background-color: var(--c-code-bg);
 }
 
@@ -59,120 +91,273 @@
 
 .markdown-body ruby rt {
     font-size: 0.5em;
-    color: var(--c-text-muted, #666);
+    color: var(--c-text-muted);
     font-weight: 400;
 }
 
-/* === Main Typography === */
+/* === Main Typography Container === */
 .markdown-body {
     width: 100%;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--spacing-unit);
+    padding: 0 calc(var(--spacing-unit) * 2);
+
+    /* Base Typography */
     color: var(--c-text);
     font-family: var(--font-sans);
-    font-feature-settings: "palt";
+    font-size: var(--text-base);
+    line-height: var(--line-height-base);
+
+    /* Japanese Typography Optimization */
+    font-feature-settings: "palt", "halt"; /* 約物半角 */
     font-kerning: normal;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    font-weight: 400;
-    -webkit-text-stroke-width: 0.15px;
-    -webkit-text-stroke-color: #000000;
-    color: #000000;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* 和欧間スペース（Chrome 120+対応） */
+    text-autospace: ideograph-alpha ideograph-numeric;
+
+    /* 句読点ぶら下げ */
+    hanging-punctuation: first allow-end;
+
+    /* 禁則処理 */
+    word-break: normal;
+    overflow-wrap: anywhere;
+    line-break: strict;
+
+    /* Letter Spacing */
     letter-spacing: 0.02em;
 }
 
-/* Headings */
+/* === First Element Reset === */
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
+}
+
+.markdown-body > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* === Headings === */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body h5,
 .markdown-body h6 {
-    margin-top: 2em;
-    margin-bottom: 1em;
+    margin-top: calc(var(--rhythm) * 2);
+    margin-bottom: var(--rhythm);
     font-weight: 700;
     line-height: var(--line-height-heading);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
+    color: var(--c-text-heading);
 }
 
+/* H1: 特別な存在感 */
 .markdown-body h1 {
-    font-size: 2.25em;
-    border-bottom: 1px solid var(--c-border);
-    padding-bottom: 0.3em;
+    font-size: var(--scale-h1);
+    padding-bottom: 0.4em;
+    border-bottom: 2px solid var(--c-text-heading);
+    margin-top: 0;
 }
 
+/* H2: セクション区切り */
 .markdown-body h2 {
-    font-size: 1.75em;
-    border-bottom: 1px solid var(--c-border);
+    font-size: var(--scale-h2);
     padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--c-border-heavy);
 }
 
+/* H3: サブセクション */
 .markdown-body h3 {
-    font-size: 1.5em;
+    font-size: var(--scale-h3);
+    color: var(--c-text);
 }
 
+/* H4: 強調見出し */
 .markdown-body h4 {
-    font-size: 1.25em;
+    font-size: var(--scale-h4);
+    font-weight: 600;
+    color: var(--c-text);
 }
 
-/* Text */
+/* H5, H6: 軽量見出し */
+.markdown-body h5 {
+    font-size: var(--scale-h5);
+    font-weight: 600;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.markdown-body h6 {
+    font-size: var(--scale-h6);
+    font-weight: 600;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* === Paragraphs === */
 .markdown-body p {
     margin-top: 0;
-    margin-bottom: 1.5em;
+    margin-bottom: var(--rhythm);
     text-align: justify;
+    text-justify: inter-ideograph;
 }
 
-.markdown-body>*:first-child {
-    margin-top: 0 !important;
-}
+/* 行長はコンテナの --max-width (38em) で制御 */
 
-/* Blockquotes */
+/* === Blockquotes === */
 .markdown-body blockquote {
-    margin: 1.5em 0;
-    padding: 0.5em 1em;
+    position: relative;
+    margin: var(--rhythm) 0;
+    padding: calc(var(--rhythm) * 0.75) 1.5em;
     color: var(--c-text-muted);
-    border-left: 0.25em solid var(--c-border);
-    background-color: transparent;
+    background-color: var(--c-blockquote-bg);
+    border-left: 4px solid var(--c-blockquote-border);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+}
+
+/* 装飾的引用符 */
+.markdown-body blockquote::before {
+    content: '\201C'; /* " */
+    position: absolute;
+    top: -0.2em;
+    left: 0.3em;
+    font-size: 3em;
+    color: var(--c-border);
+    font-family: Georgia, serif;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.markdown-body blockquote p {
+    text-align: left;
+    margin-bottom: calc(var(--rhythm) * 0.5);
 }
 
 .markdown-body blockquote p:last-child {
     margin-bottom: 0;
 }
 
-/* Lists */
+/* ネストされた引用 */
+.markdown-body blockquote blockquote {
+    margin-top: calc(var(--rhythm) * 0.5);
+    margin-bottom: 0;
+    border-left-color: var(--c-border);
+}
+
+.markdown-body blockquote blockquote::before {
+    display: none;
+}
+
+/* === Lists === */
 .markdown-body ul,
 .markdown-body ol {
-    padding-left: 2em;
-    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+    margin-top: 0;
+    margin-bottom: var(--rhythm);
 }
 
+/* Unordered List: カスタムマーカー */
+.markdown-body ul {
+    list-style: none;
+}
+
+.markdown-body ul > li {
+    position: relative;
+}
+
+.markdown-body ul > li::before {
+    content: '\2022'; /* • */
+    position: absolute;
+    left: -1.2em;
+    color: var(--c-text-muted);
+    font-weight: 700;
+}
+
+/* ネストレベルごとのマーカー変化 */
+.markdown-body ul ul > li::before {
+    content: '\25E6'; /* ◦ */
+}
+
+.markdown-body ul ul ul > li::before {
+    content: '\25AA'; /* ▪ */
+}
+
+/* Ordered List: スタイリング */
+.markdown-body ol {
+    list-style: none;
+    counter-reset: ol-counter;
+}
+
+.markdown-body ol > li {
+    position: relative;
+    counter-increment: ol-counter;
+}
+
+.markdown-body ol > li::before {
+    content: counter(ol-counter) '.';
+    position: absolute;
+    left: -1.8em;
+    width: 1.5em;
+    text-align: right;
+    color: var(--c-accent);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+
+/* List Item Spacing */
 .markdown-body li {
-    margin-bottom: 0.5em;
+    margin-bottom: calc(var(--rhythm) * 0.35);
 }
 
-.markdown-body li>p {
-    margin-bottom: 0.5em;
+.markdown-body li > p {
+    margin-bottom: calc(var(--rhythm) * 0.35);
 }
 
-/* Code */
+.markdown-body li:last-child {
+    margin-bottom: 0;
+}
+
+/* Nested Lists */
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ul,
+.markdown-body ol ol {
+    margin-top: calc(var(--rhythm) * 0.35);
+    margin-bottom: 0;
+}
+
+/* Task Lists */
+.markdown-body input[type="checkbox"] {
+    margin-right: 0.5em;
+    transform: scale(1.1);
+}
+
+/* === Code === */
 .markdown-body pre {
-    padding: 1rem;
+    padding: 1rem 1.25rem;
     overflow: auto;
-    font-size: 0.9em;
-    line-height: 1.5;
+    font-size: 0.875em;
+    line-height: 1.6;
     background-color: var(--c-code-bg);
     border-radius: var(--radius-md);
-    margin-bottom: 1.5em;
+    margin-bottom: var(--rhythm);
+    border: 1px solid var(--c-border);
 }
 
 .markdown-body code {
-    padding: 0.2em 0.4em;
+    padding: 0.15em 0.4em;
     margin: 0;
-    font-size: 0.9em;
+    font-size: 0.875em;
     font-family: var(--font-mono);
     background-color: var(--c-code-bg);
     border-radius: var(--radius-sm);
+    border: 1px solid var(--c-border);
 }
 
 .markdown-body pre code {
@@ -185,7 +370,7 @@
     border: 0;
 }
 
-/* Tables */
+/* === Tables === */
 .markdown-body table {
     display: block;
     width: 100%;
@@ -194,7 +379,7 @@
     overflow: auto;
     border-spacing: 0;
     border-collapse: collapse;
-    margin-bottom: 1.5em;
+    margin-bottom: var(--rhythm);
 }
 
 .markdown-body tr {
@@ -208,46 +393,160 @@
 
 .markdown-body th,
 .markdown-body td {
-    padding: 0.8em 1em;
+    padding: 0.65em 1em;
     border: 1px solid var(--c-border);
 }
 
 .markdown-body th {
     font-weight: 600;
     background-color: var(--c-code-bg);
+    text-align: left;
 }
 
-/* Links */
+/* === Links === */
 .markdown-body a {
     color: var(--c-accent);
     text-decoration: none;
+    text-underline-offset: 0.15em;
+    transition: color 0.15s ease;
 }
 
 .markdown-body a:hover {
+    color: var(--c-accent-hover);
     text-decoration: underline;
 }
 
-/* Horizontal Rule */
+/* === Horizontal Rule === */
 .markdown-body hr {
-    height: 0.25em;
-    padding: 0;
-    margin: 2em 0;
-    background-color: var(--c-border);
+    height: 0;
+    margin: calc(var(--rhythm) * 1.5) 0;
     border: 0;
+    border-top: 1px solid var(--c-border-heavy);
+}
+
+/* === Images === */
+.markdown-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+}
+
+/* === Strong & Emphasis === */
+.markdown-body strong {
+    font-weight: 700;
+    color: var(--c-text-heading);
+}
+
+.markdown-body em {
+    font-style: italic;
+}
+
+/* === Strikethrough === */
+.markdown-body del {
+    color: var(--c-text-muted);
+}
+
+/* === Definition Lists === */
+.markdown-body dl {
+    margin-bottom: var(--rhythm);
+}
+
+.markdown-body dt {
+    font-weight: 600;
+    margin-top: calc(var(--rhythm) * 0.5);
+}
+
+.markdown-body dd {
+    margin-left: 1.5em;
+    margin-bottom: calc(var(--rhythm) * 0.5);
+}
+
+/* === Keyboard Input === */
+.markdown-body kbd {
+    display: inline-block;
+    padding: 0.2em 0.4em;
+    font-size: 0.85em;
+    font-family: var(--font-mono);
+    line-height: 1;
+    color: var(--c-text);
+    background-color: var(--c-code-bg);
+    border: 1px solid var(--c-border-heavy);
+    border-radius: var(--radius-sm);
+    box-shadow: inset 0 -1px 0 var(--c-border-heavy);
+}
+
+/* === Abbreviations === */
+.markdown-body abbr[title] {
+    text-decoration: underline dotted;
+    cursor: help;
+}
+
+/* === Mark (Highlight) === */
+.markdown-body mark {
+    padding: 0.1em 0.2em;
+    background-color: #fff8c5;
+    border-radius: 2px;
+}
+
+/* === Responsive Typography === */
+@media (max-width: 600px) {
+    .markdown-body {
+        padding: 0 calc(var(--spacing-unit) * 1.5);
+    }
+
+    .markdown-body h1 {
+        font-size: calc(var(--scale-h1) * 0.85);
+    }
+
+    .markdown-body h2 {
+        font-size: calc(var(--scale-h2) * 0.9);
+    }
+
+    .markdown-body h3 {
+        font-size: calc(var(--scale-h3) * 0.9);
+    }
+
+    .markdown-body blockquote {
+        padding-left: 1em;
+    }
+
+    .markdown-body blockquote::before {
+        font-size: 2em;
+    }
+}
+
+/* === Print Styles === */
+@media print {
+    .markdown-body {
+        max-width: none;
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    .markdown-body a {
+        color: inherit;
+        text-decoration: underline;
+    }
+
+    .markdown-body a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: var(--c-text-muted);
+    }
+
+    .markdown-body pre,
+    .markdown-body blockquote {
+        page-break-inside: avoid;
+    }
+
+    .markdown-body h1,
+    .markdown-body h2,
+    .markdown-body h3 {
+        page-break-after: avoid;
+    }
 }
 
 /* === Syntax Highlighting (highlight.js GitHub theme) === */
-/*!
-  Theme: GitHub
-  Description: Light theme as seen on github.com
-  Author: github.com
-  Maintainer: @Hirse
-  Updated: 2021-05-15
-
-  Outdated base version: https://github.com/primer/github-syntax-light
-  Current colors taken from GitHub's CSS
-  License: BSD-3-Clause
-*/
 pre code.hljs {
     display: block;
     overflow-x: auto;
