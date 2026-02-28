@@ -5,6 +5,7 @@ node_modules/
 
 # Production
 dist/
+dist-cli/
 out/
 build/
 
