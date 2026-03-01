@@ -333,6 +333,18 @@
 }
 
 /* Task Lists */
+.markdown-body .contains-task-list {
+    padding-left: 0;
+}
+
+.markdown-body .task-list-item {
+    list-style: none;
+}
+
+.markdown-body .task-list-item::before {
+    content: none;
+}
+
 .markdown-body input[type="checkbox"] {
     margin-right: 0.5em;
     transform: scale(1.1);
