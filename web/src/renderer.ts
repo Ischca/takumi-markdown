@@ -129,22 +129,45 @@ function buildList(
     (el as HTMLOListElement).start = start;
   }
 
+  let hasTask = false;
   for (const item of items) {
     const li = document.createElement("li");
 
     // Task list checkbox
     if (item.checked !== null) {
+      hasTask = true;
+      li.className = "task-list-item";
       const cb = document.createElement("input");
       cb.type = "checkbox";
       cb.checked = item.checked;
       cb.disabled = true;
       li.appendChild(cb);
+
+      // Inline the first paragraph's content to avoid line break after checkbox
+      const firstChild = item.children[0];
+      if (firstChild && firstChild.type === "Paragraph") {
+        const span = document.createElement("span");
+        appendInlines(span, firstChild.children);
+        li.appendChild(span);
+        for (let i = 1; i < item.children.length; i++) {
+          li.appendChild(buildBlockNode(item.children[i]));
+        }
+      } else {
+        for (const child of item.children) {
+          li.appendChild(buildBlockNode(child));
+        }
+      }
+    } else {
+      for (const child of item.children) {
+        li.appendChild(buildBlockNode(child));
+      }
     }
 
-    for (const child of item.children) {
-      li.appendChild(buildBlockNode(child));
-    }
     el.appendChild(li);
+  }
+
+  if (hasTask) {
+    el.classList.add("contains-task-list");
   }
 
   return el;
