@@ -1,0 +1,56 @@
+{
+  "name": "takumi-markdown",
+  "version": "2.0.0",
+  "description": "Markdown renderer with Japanese typography optimization, powered by Rust/WASM",
+  "type": "module",
+  "main": "./dist/takumi-markdown.js",
+  "module": "./dist/takumi-markdown.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/takumi-markdown.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "files": [
+    "dist/**/*",
+    "pkg/**/*"
+  ],
+  "scripts": {
+    "build:wasm": "wasm-pack build ../crates/takumi-wasm --target web --out-dir ../../web/pkg",
+    "build": "npm run build:wasm && vite build",
+    "dev": "vite"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-dom": { "optional": true }
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vite-plugin-dts": "^4.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "keywords": [
+    "markdown",
+    "japanese",
+    "typography",
+    "wasm",
+    "rust",
+    "ruby",
+    "furigana"
+  ],
+  "license": "MIT"
+}

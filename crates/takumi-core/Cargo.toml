@@ -1,0 +1,12 @@
+[package]
+name = "takumi-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Markdown parsing and Japanese typography core for Takumi"
+
+[dependencies]
+pulldown-cmark = { version = "0.12", features = ["simd"] }
+regex = "1"
+serde = { workspace = true }
+serde_json = { workspace = true }

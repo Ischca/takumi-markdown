@@ -18,6 +18,10 @@ build/
 *.vsix
 extension/*.vsix
 
+# Rust
+target/
+web/pkg/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
