@@ -26,3 +26,5 @@ web/pkg/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+web/pkg-node/
+web/pkg-node/
