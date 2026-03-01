@@ -1,0 +1,20 @@
+[package]
+name = "takumi-metal"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "GPU-rendered Markdown viewer for macOS (Metal/wgpu backend)"
+
+[[bin]]
+name = "takumi"
+path = "src/main.rs"
+
+[dependencies]
+takumi-core = { path = "../takumi-core" }
+takumi-layout = { path = "../takumi-layout" }
+wgpu = "24"
+winit = "0.30"
+cosmic-text = "0.12"
+syntect = { version = "5", default-features = false, features = ["default-fancy"] }
+pollster = "0.4"
+bytemuck = { version = "1", features = ["derive"] }

@@ -21,8 +21,12 @@
     "dist/**/*.cjs",
     "dist/**/*.mjs",
     "dist/**/*.css",
-    "dist/**/*.d.ts"
+    "dist/**/*.d.ts",
+    "dist-cli/**/*.mjs"
   ],
+  "bin": {
+    "takumi-md": "./dist-cli/takumi-md.mjs"
+  },
   "keywords": [
     "markdown",
     "react",
@@ -30,7 +34,9 @@
     "typography",
     "ruby",
     "furigana",
-    "cjk"
+    "cjk",
+    "terminal",
+    "cli"
   ],
   "repository": {
     "type": "git",
@@ -40,6 +46,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json && node scripts/copy-styles.js",
+    "build:cli": "vite build --config vite.config.cli.ts && node scripts/add-shebang.mjs && chmod +x dist-cli/takumi-md.mjs",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "lint": "eslint .",
@@ -57,6 +64,8 @@
     "react-markdown": "^10.1.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "unified": "^11.0.0",
     "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {

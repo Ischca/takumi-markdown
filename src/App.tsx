@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
-import { MarkdownRenderer } from './components/MarkdownRenderer';
+import { renderMarkdown } from '../web/src/index';
 
 const SAMPLE_DOC = `---
 title: The Art of Documentation
@@ -10,7 +10,7 @@ author: Takumi
 
 # Takumi Markdown
 
-The **premium** markdown renderer for React.
+The **premium** markdown renderer, now powered by **Rust/WASM**.
 Designed for the AI era, optimized for readability.
 
 ## Typography
@@ -29,24 +29,37 @@ const SAMPLE_CHAT = `Here is an explanation of **Takumi Markdown** with some cod
 
 ### Key Features
 
-1. **Drop-in Replacement**: Works with existing React apps.
+1. **Drop-in Replacement**: Works with existing apps — no React dependency required.
 2. **Beautiful Defaults**: No configuration needed.
 3. **Multilingual**: \`｜未来《ミライ》\` (Future) looks great.
 
-\`\`\`tsx
-import { MarkdownRenderer } from 'takumi-markdown';
+\`\`\`typescript
+import { renderMarkdown } from 'takumi-markdown';
 
-function ChatMessage({ content }) {
-  return <MarkdownRenderer content={content} />;
-}
+const el = document.getElementById('content')!;
+await renderMarkdown(el, '# Hello World');
 \`\`\`
 
 Is there anything else you would like to know?`;
+
+/** Hook to render markdown into a ref'd element via WASM. */
+function useMarkdownRenderer(markdown: string) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    renderMarkdown(ref.current, markdown).catch(console.error);
+  }, [markdown]);
+
+  return ref;
+}
 
 function App() {
   const [markdown, setMarkdown] = useState(SAMPLE_DOC);
   const [mode, setMode] = useState<'doc' | 'chat'>('doc');
   const [streaming, setStreaming] = useState(false);
+
+  const previewRef = useMarkdownRenderer(markdown);
 
   // Switch content when mode changes
   useEffect(() => {
@@ -55,7 +68,7 @@ function App() {
   }, [mode]);
 
   // Simulate streaming effect
-  const handleSimulateStream = () => {
+  const handleSimulateStream = useCallback(() => {
     if (streaming) return;
     setStreaming(true);
     const targetText = mode === 'chat' ? SAMPLE_CHAT : SAMPLE_DOC;
@@ -64,14 +77,14 @@ function App() {
     let i = 0;
     const interval = setInterval(() => {
       setMarkdown(targetText.slice(0, i));
-      i += 5; // speed
+      i += 5;
       if (i > targetText.length) {
         clearInterval(interval);
         setStreaming(false);
         setMarkdown(targetText);
       }
     }, 10);
-  };
+  }, [streaming, mode]);
 
   return (
     <div className="app-container">
@@ -82,7 +95,7 @@ function App() {
           <p className="hero-subtitle">
             <strong>Reading is the bottleneck of the AI Era.</strong><br />
             Takumi transforms generated text into a beautiful reading experience.<br />
-            Optimized for documentation, chat logs, and knowledge bases.
+            Now powered by <strong>Rust/WASM</strong> — framework-agnostic, zero React dependency.
           </p>
           <div className="hero-actions">
             <a href="https://github.com/ischca/takumi-markdown" className="btn btn-primary">GitHub</a>
@@ -131,17 +144,17 @@ function App() {
             />
           </div>
           <div className="preview-pane-wrapper">
-            <div className="pane-label">Preview (Takumi Renderer)</div>
+            <div className="pane-label">Preview (WASM Renderer)</div>
             <div className="preview-pane">
               {mode === 'chat' ? (
                 <div className="chat-bubble ai">
                   <div className="avatar">AI</div>
                   <div className="bubble-content">
-                    <MarkdownRenderer content={markdown} />
+                    <div ref={previewRef} />
                   </div>
                 </div>
               ) : (
-                <MarkdownRenderer content={markdown} />
+                <div ref={previewRef} />
               )}
             </div>
           </div>
@@ -151,21 +164,21 @@ function App() {
       {/* Features */}
       <section className="features-section">
         <div className="feature-card">
-          <h3>🎨 Premium Typography</h3>
-          <p>Optimized line-height, letter-spacing, and font-family for the best reading experience.</p>
+          <h3>Rust/WASM Core</h3>
+          <p>Markdown parsing and layout in Rust, compiled to WASM. Framework-agnostic — works with React, Vue, Svelte, or vanilla JS.</p>
         </div>
         <div className="feature-card">
-          <h3>🇯🇵 CJK Optimization</h3>
-          <p>Perfect ruby (furigana) rendering. <code>｜Kanji《kana》</code> syntax supported natively.</p>
+          <h3>CJK Optimization</h3>
+          <p>Ruby (furigana) rendering, kinsoku line-breaking, and vertical rhythm. <code>｜漢字《かんじ》</code> syntax supported.</p>
         </div>
         <div className="feature-card">
-          <h3>🤖 AI Ready</h3>
+          <h3>AI Ready</h3>
           <p>Stable rendering during token streaming. No layout shifts or broken formatting.</p>
         </div>
       </section>
 
       <footer className="app-footer">
-        <p>© 2026 Takumi Markdown. MIT License.</p>
+        <p>&copy; 2026 Takumi Markdown. MIT License.</p>
       </footer>
     </div>
   );
